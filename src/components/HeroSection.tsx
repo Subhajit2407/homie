@@ -19,9 +19,9 @@ export default function HeroSection() {
         <img
           src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/31457abb-a03e-4360-a07b-cf8e1996349d/generated_images/professional-interior-photography-of-a-m-0015d39f-20251111182913.jpg"
           alt="Modern PG room in Bengaluru"
-          className="h-full w-full object-cover opacity-40"
+          className="h-full w-full object-cover opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-beige/95 via-beige/85 to-beige/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
       </div>
 
       {/* Content */}
@@ -32,10 +32,14 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="mb-4 text-5xl font-bold leading-tight text-foreground md:text-6xl lg:text-7xl">
-              Find your perfect stay in Bengaluru.
+            <h1 className="mb-4 text-5xl font-extrabold leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] md:text-6xl lg:text-7xl tracking-tight">
+              Find your perfect stay in{" "}
+              <span className="bg-gradient-to-r from-[#FF8C42] to-[#ff7a2e] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,140,66,0.4)]">
+                Bengaluru
+              </span>
+              .
             </h1>
-            <p className="mb-10 max-w-2xl text-lg text-foreground/70 md:text-xl">
+            <p className="mb-10 max-w-2xl text-lg text-white/90 md:text-xl font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)] leading-relaxed">
               Connecting students and professionals to verified PGs, flats & coliving homes across the city.
             </p>
           </motion.div>
