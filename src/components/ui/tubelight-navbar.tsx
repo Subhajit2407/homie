@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -18,7 +19,7 @@ interface NavBarProps {
 }
 
 export function NavBar({ items, className }: NavBarProps) {
-  const [activeTab, setActiveTab] = useState(items[0].name)
+  const pathname = usePathname()
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
@@ -41,13 +42,12 @@ export function NavBar({ items, className }: NavBarProps) {
       <div className="flex items-center gap-2 sm:gap-3 bg-white/90 dark:bg-slate-900/90 border border-orange/20 backdrop-blur-xl py-2 px-2 rounded-full shadow-2xl shadow-orange/10">
         {items.map((item) => {
           const Icon = item.icon
-          const isActive = activeTab === item.name
+          const isActive = pathname === item.url
 
           return (
             <Link
               key={item.name}
               href={item.url}
-              onClick={() => setActiveTab(item.name)}
               className={cn(
                 "relative cursor-pointer text-sm sm:text-base font-bold px-4 sm:px-6 py-2.5 sm:py-3 rounded-full transition-all duration-300",
                 "text-foreground/70 hover:text-orange hover:scale-105",
