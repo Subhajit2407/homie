@@ -1,4 +1,6 @@
-Sunburst } from "lucide-react"
+"use client"
+
+import { SunIcon as Sunburst } from "lucide-react"
 import { useState } from "react"
 
 interface FullScreenAuthProps {
