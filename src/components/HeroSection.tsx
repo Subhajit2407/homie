@@ -36,7 +36,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-[650px] w-full overflow-hidden bg-gradient-to-br from-beige-dark to-beige md:min-h-[750px]">
+    <section className="relative min-h-[550px] w-full overflow-hidden bg-gradient-to-br from-beige-dark to-beige sm:min-h-[650px] md:min-h-[700px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
@@ -48,21 +48,21 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 mx-auto flex min-h-[650px] flex-col justify-center px-4 py-20 md:min-h-[750px] md:px-6 lg:px-8">
+      <div className="container relative z-10 mx-auto flex min-h-[550px] flex-col justify-center px-4 py-16 sm:min-h-[650px] sm:py-20 md:min-h-[700px] md:px-6 lg:px-8">
         <div className="max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="mb-4 text-5xl font-extrabold leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] md:text-6xl lg:text-7xl tracking-tight">
+            <h1 className="mb-3 text-3xl font-extrabold leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] sm:text-4xl sm:mb-4 md:text-5xl lg:text-6xl tracking-tight">
               Find your perfect stay in{" "}
               <span className="bg-gradient-to-r from-[#FF8C42] to-[#ff7a2e] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(255,140,66,0.4)]">
                 Bengaluru
               </span>
               .
             </h1>
-            <p className="mb-10 max-w-2xl text-lg text-white/90 md:text-xl font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)] leading-relaxed">
+            <p className="mb-6 max-w-2xl text-base text-white/90 sm:text-lg sm:mb-8 md:text-xl font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)] leading-relaxed">
               Connecting students and professionals to verified PGs, flats & coliving homes across the city.
             </p>
           </motion.div>
@@ -72,14 +72,14 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-2xl bg-white p-6 shadow-2xl md:p-8"
+            className="rounded-xl sm:rounded-2xl bg-white p-4 shadow-2xl sm:p-6 md:p-8"
           >
-            <div className="grid gap-4 md:grid-cols-4">
+            <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
               {/* Location */}
-              <div className="flex items-center gap-3 rounded-xl border border-border bg-accent/30 p-4 transition-all hover:border-[#FF8C42]/50">
+              <div className="flex items-center gap-3 rounded-lg sm:rounded-xl border border-border bg-accent/30 p-3 sm:p-4 transition-all hover:border-[#FF8C42]/50 hover:shadow-md">
                 <MapPin className="h-5 w-5 flex-shrink-0 text-[#FF8C42]" />
                 <Select value={selectedLocality} onValueChange={setSelectedLocality}>
-                  <SelectTrigger className="border-0 p-0 focus:ring-0">
+                  <SelectTrigger className="border-0 p-0 focus:ring-0 h-auto text-sm sm:text-base">
                     <SelectValue placeholder="Area / Locality" />
                   </SelectTrigger>
                   <SelectContent>
@@ -97,10 +97,10 @@ export default function HeroSection() {
               </div>
 
               {/* Budget */}
-              <div className="flex items-center gap-3 rounded-xl border border-border bg-accent/30 p-4 transition-all hover:border-[#FF8C42]/50">
+              <div className="flex items-center gap-3 rounded-lg sm:rounded-xl border border-border bg-accent/30 p-3 sm:p-4 transition-all hover:border-[#FF8C42]/50 hover:shadow-md">
                 <DollarSign className="h-5 w-5 flex-shrink-0 text-[#FF8C42]" />
                 <Select value={selectedBudget} onValueChange={setSelectedBudget}>
-                  <SelectTrigger className="border-0 p-0 focus:ring-0">
+                  <SelectTrigger className="border-0 p-0 focus:ring-0 h-auto text-sm sm:text-base">
                     <SelectValue placeholder="Budget" />
                   </SelectTrigger>
                   <SelectContent>
@@ -114,10 +114,10 @@ export default function HeroSection() {
               </div>
 
               {/* Room Type */}
-              <div className="flex items-center gap-3 rounded-xl border border-border bg-accent/30 p-4 transition-all hover:border-[#FF8C42]/50">
+              <div className="flex items-center gap-3 rounded-lg sm:rounded-xl border border-border bg-accent/30 p-3 sm:p-4 transition-all hover:border-[#FF8C42]/50 hover:shadow-md">
                 <BedDouble className="h-5 w-5 flex-shrink-0 text-[#FF8C42]" />
                 <Select value={selectedRoomType} onValueChange={setSelectedRoomType}>
-                  <SelectTrigger className="border-0 p-0 focus:ring-0">
+                  <SelectTrigger className="border-0 p-0 focus:ring-0 h-auto text-sm sm:text-base">
                     <SelectValue placeholder="Room Type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -134,9 +134,9 @@ export default function HeroSection() {
               {/* Search Button */}
               <Button 
                 onClick={handleSearch}
-                className="h-auto bg-[#FF8C42] py-4 text-base font-semibold text-white hover:bg-[#ff7a2e] shadow-lg transition-all hover:shadow-xl"
+                className="h-auto bg-[#FF8C42] py-3 sm:py-4 text-sm sm:text-base font-semibold text-white hover:bg-[#ff7a2e] shadow-lg transition-all hover:shadow-xl active:scale-95"
               >
-                <Search className="mr-2 h-5 w-5" />
+                <Search className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Search
               </Button>
             </div>
