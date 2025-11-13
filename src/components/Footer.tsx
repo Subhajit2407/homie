@@ -2,6 +2,7 @@
 
 import { Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react"
 import { Twitter } from "lucide-react"
+import Link from "next/link"
 
 export default function Footer() {
   return (
@@ -41,19 +42,19 @@ export default function Footer() {
             <h3 className="mb-4 text-sm font-semibold text-foreground">Company</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#about" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
+                <Link href="/about" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#careers" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
-                  Careers
-                </a>
+                <Link href="/safety" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
+                  Safety
+                </Link>
               </li>
               <li>
-                <a href="#blog" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
+                <Link href="/blog" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#support" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
@@ -68,14 +69,14 @@ export default function Footer() {
             <h3 className="mb-4 text-sm font-semibold text-foreground">Legal</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#terms" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
-                  Terms
-                </a>
+                <Link href="/terms" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
+                  Terms & Conditions
+                </Link>
               </li>
               <li>
-                <a href="#privacy" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
-                  Privacy
-                </a>
+                <Link href="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-[#FF8C42]">
+                  Privacy Policy
+                </Link>
               </li>
             </ul>
           </div>

@@ -54,6 +54,9 @@ export default function PropertyDetailModal({ open, onOpenChange, property }: Pr
     setCurrentImageIndex(index)
   }
 
+  // Google Maps embed URL
+  const mapEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodeURIComponent(property.address)}&zoom=15`
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-5xl max-h-[95vh] overflow-hidden p-0 gap-0 border-none shadow-2xl rounded-3xl">
@@ -266,17 +269,20 @@ export default function PropertyDetailModal({ open, onOpenChange, property }: Pr
                   </div>
                 </div>
 
-                {/* Map View Placeholder */}
+                {/* Map View with Google Maps Embed */}
                 <div className="mb-8">
                   <h3 className="mb-4 text-xl font-bold">Location</h3>
-                  <div className="aspect-video w-full overflow-hidden rounded-2xl border-2 border-border/50 bg-gradient-to-br from-orange/5 to-beige">
-                    <div className="flex h-full items-center justify-center">
-                      <div className="text-center">
-                        <MapPin className="mx-auto mb-3 h-12 w-12 text-orange" />
-                        <p className="text-lg font-semibold text-foreground">Map View</p>
-                        <p className="text-sm text-muted-foreground">{property.location}</p>
-                      </div>
-                    </div>
+                  <div className="aspect-video w-full overflow-hidden rounded-2xl border-2 border-border/50 shadow-md">
+                    <iframe
+                      src={mapEmbedUrl}
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={`Map location for ${property.title}`}
+                    />
                   </div>
                 </div>
 
