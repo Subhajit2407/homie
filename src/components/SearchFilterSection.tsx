@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useMemo, useCallback } from "react"
+import { useState, useMemo, useCallback, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { Search, Building2, MapPin, DollarSign, Calendar, Wifi, UtensilsCrossed, WashingMachine, Users, Heart, SlidersHorizontal, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -152,6 +153,7 @@ const propertyListings = [
 ]
 
 export default function SearchFilterSection() {
+  const searchParams = useSearchParams()
   const [selectedProperty, setSelectedProperty] = useState<typeof propertyListings[0] | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
@@ -167,6 +169,35 @@ export default function SearchFilterSection() {
     laundry: false,
     coupleFriendly: false
   })
+
+  // Apply URL search params on mount
+  useEffect(() => {
+    const localityParam = searchParams.get("locality")
+    const budgetParam = searchParams.get("budget")
+    const roomTypeParam = searchParams.get("roomType")
+
+    if (localityParam) {
+      setLocality(localityParam)
+    }
+
+    if (budgetParam) {
+      // Map budget param to budget range
+      const budgetMap: { [key: string]: number[] } = {
+        "5-10k": [5000, 10000],
+        "10-15k": [10000, 15000],
+        "15-20k": [15000, 20000],
+        "20-30k": [20000, 30000],
+        "30k-plus": [30000, 50000]
+      }
+      if (budgetMap[budgetParam]) {
+        setBudgetRange(budgetMap[budgetParam])
+      }
+    }
+
+    if (roomTypeParam) {
+      setRoomType(roomTypeParam)
+    }
+  }, [searchParams])
 
   // Memoized filter logic for performance
   const filteredProperties = useMemo(() => {

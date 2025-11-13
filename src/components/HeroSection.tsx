@@ -1,8 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import { Search, MapPin, DollarSign, BedDouble } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { useRouter } from "next/navigation"
 import {
   Select,
   SelectContent,
@@ -12,6 +14,27 @@ import {
 } from "@/components/ui/select"
 
 export default function HeroSection() {
+  const router = useRouter()
+  const [selectedLocality, setSelectedLocality] = useState<string>("")
+  const [selectedBudget, setSelectedBudget] = useState<string>("")
+  const [selectedRoomType, setSelectedRoomType] = useState<string>("")
+
+  const handleSearch = () => {
+    const params = new URLSearchParams()
+    
+    if (selectedLocality) {
+      params.append("locality", selectedLocality)
+    }
+    if (selectedBudget) {
+      params.append("budget", selectedBudget)
+    }
+    if (selectedRoomType) {
+      params.append("roomType", selectedRoomType)
+    }
+
+    router.push(`/find-pgs${params.toString() ? `?${params.toString()}` : ""}`)
+  }
+
   return (
     <section className="relative min-h-[650px] w-full overflow-hidden bg-gradient-to-br from-beige-dark to-beige md:min-h-[750px]">
       {/* Background Image */}
@@ -55,7 +78,7 @@ export default function HeroSection() {
               {/* Location */}
               <div className="flex items-center gap-3 rounded-xl border border-border bg-accent/30 p-4 transition-all hover:border-[#FF8C42]/50">
                 <MapPin className="h-5 w-5 flex-shrink-0 text-[#FF8C42]" />
-                <Select>
+                <Select value={selectedLocality} onValueChange={setSelectedLocality}>
                   <SelectTrigger className="border-0 p-0 focus:ring-0">
                     <SelectValue placeholder="Area / Locality" />
                   </SelectTrigger>
@@ -76,7 +99,7 @@ export default function HeroSection() {
               {/* Budget */}
               <div className="flex items-center gap-3 rounded-xl border border-border bg-accent/30 p-4 transition-all hover:border-[#FF8C42]/50">
                 <DollarSign className="h-5 w-5 flex-shrink-0 text-[#FF8C42]" />
-                <Select>
+                <Select value={selectedBudget} onValueChange={setSelectedBudget}>
                   <SelectTrigger className="border-0 p-0 focus:ring-0">
                     <SelectValue placeholder="Budget" />
                   </SelectTrigger>
@@ -93,7 +116,7 @@ export default function HeroSection() {
               {/* Room Type */}
               <div className="flex items-center gap-3 rounded-xl border border-border bg-accent/30 p-4 transition-all hover:border-[#FF8C42]/50">
                 <BedDouble className="h-5 w-5 flex-shrink-0 text-[#FF8C42]" />
-                <Select>
+                <Select value={selectedRoomType} onValueChange={setSelectedRoomType}>
                   <SelectTrigger className="border-0 p-0 focus:ring-0">
                     <SelectValue placeholder="Room Type" />
                   </SelectTrigger>
@@ -109,7 +132,10 @@ export default function HeroSection() {
               </div>
 
               {/* Search Button */}
-              <Button className="h-auto bg-[#FF8C42] py-4 text-base font-semibold text-white hover:bg-[#ff7a2e] shadow-lg transition-all hover:shadow-xl">
+              <Button 
+                onClick={handleSearch}
+                className="h-auto bg-[#FF8C42] py-4 text-base font-semibold text-white hover:bg-[#ff7a2e] shadow-lg transition-all hover:shadow-xl"
+              >
                 <Search className="mr-2 h-5 w-5" />
                 Search
               </Button>
